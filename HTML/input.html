@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        window.onload = function () {
+            //range
+            let inputRange = document.getElementById("input-range");
+            let outputRange = document.getElementById("output-range");
+            outputRange.value = inputRange.value;
+            inputRange.onchange = function () {
+                outputRange.value = inputRange.value;
+            }
+            //number
+            let inputNumber = document.getElementById("input-number");
+            let outputNumber = document.getElementById("output-number");
+            outputNumber.value = inputNumber.value;
+            inputNumber.onchange = function () {
+                outputNumber.value = inputNumber.value;
+            }
+            //color
+            let inputColor = document.getElementById("input-color");
+            let outputColor = document.getElementById("output-color");
+            outputColor.value = inputColor.value;
+            inputColor.onchange = function () {
+                outputColor.value = inputColor.value;
+            }
+            //
+            let progress = document.getElementById("progress-id");
+            let progressBtn = document.getElementById("progress-btn");
+            progressBtn.onclick = function () {
+                let i = 0;
+                setInterval(function () {
+                    if (i < 100) {
+                        i++;
+                        progress.value = i;
+                    }
+                }, 100)
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form method="post">
+        <!-- 验证性 -->
+        <p>
+            <label>电子邮件：</label>
+            <input type="email" />
+        </p>
+        <p>
+            <label>电话号码：</label>
+            <input type="tel" />
+        </p>
+        <p>
+            <label>网络地址：</label>
+            <input type="url" />
+        </p>
+
+        <!-- 取值型 -->
+        <p>
+            <input id="input-range" type="range" min="0" max="10" step="2" value="2" />
+            <output id="output-range"></output>
+        </p>
+        <p>
+            <input id="input-number" type="number" min="1" max="9" step="2" value="2" />
+            <output id="output-number"></output>
+        </p>
+        <p>
+            <input id="input-color" type="color" value="" />
+            <output id="output-color"></output>
+        </p>
+        <p>
+            <input type="date" value="2020-02-02" />
+        </p>
+        <p>
+            <input type="time" value="02:02" />
+        </p>
+        <p>
+            <input type="month" value="2020-02" />
+        </p>
+        <p>
+            <input type="week" value="2020-W02" />
+        </p>
+        <p>
+            <label>网络地址：</label>
+            <input type="text" list="urlList" />
+        </p>
+        <datalist id="urlList">
+            <option label="百度" value="https://baidu.com"></option>
+            <option label="测试1" value="https://baidu1.com"></option>
+            <option label="测试2" value="https://baidu2.com"></option>
+        </datalist>
+        <keygen/>
+        <input type="submit" value="submit" />
+    </form>
+
+    <time datetime="2020-02-02">2020-02-02</time>
+    <br/>
+    <progress id="progress-id" max="100" value="10"></progress>
+    <button id="progress-btn">显示进度</button>
+    <br/>
+    <meter min="0" max="100" value="80"></meter>
+    <footer>
+        <address>地址
+            <a>test</a>
+        </address>
+    </footer>
+</body>
+
+</html>
