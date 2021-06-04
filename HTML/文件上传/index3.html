@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <script>
+        window.onload = function () {
+            let oFile = document.getElementById("file");
+            console.log("oFile", oFile);
+            oFile.onchange = function () {
+                let file = oFile.files[0];
+                console.log("", oFile.files);
+                console.log("", file);
+                console.log("", file.name);
+                console.log("", file.size);
+                console.log("", file.type);
+                console.log("", file.lastModifiedDate);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input id="file" type="file" accept="image/*" multiple />
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <script>
+        window.onload = function () {
+            let oFile = document.getElementById("file");
+            oFile.onchange = function () {
+                let file = oFile.files[0];
+                //读取本地文件，以GBK编码方式输出
+                let reader = new FileReader();
+                /*
+                    readAsText()            //将文件读取为“文本”
+                    readAsDataURL()         //将文件读取为“DataURL”
+                    readAsBinaryString()    //将文件读取为“二进制编码”
+                    readAsArrayBuffer()     //将文件读取为一个“ArrayBuffer”对象
+                    abort()                 //中止读取操作
+                */
+                // reader.readAsText(file, "utf-8");
+                reader.readAsDataURL(file);
+                /*
+                    onloadstart     开始读取
+                    onprogress      正在读取
+                    onload          成功读取
+                    onloadend       读取完成（无论成功失败）
+                    onabort         中断
+                    onerror         出错
+                */
+                reader.onload = function () {
+                    // console.log(this.result);
+                    //添加图片到页面
+                    let oImg = document.createElement("img");
+                    oImg.src = this.result;
+                    document.body.appendChild(oImg);
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input id="file" type="file" /><br />
+</body>
+
+</html>
