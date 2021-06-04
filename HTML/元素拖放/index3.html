@@ -30,7 +30,19 @@
 
             oBigBox.ondrop = function (e) {
                 e.preventDefault();
-                oSmallBox.parentNode.removeChild(oSmallBox);
+                // oSmallBox.parentNode.removeChild(oSmallBox);
+                let id = e.dataTransfer.getData("text/plain");
+                let obj = document.getElementById(id);
+                obj.parentNode.removeChild(obj);
+            }
+
+            let oList = document.getElementById("list");
+            let oLi = oList.getElementsByTagName("li");
+
+            for (let index = 0; index < oLi.length; index++) {
+                oLi[index].ondragstart = function (e) {
+                    e.dataTransfer.setData("text/plain", e.target.id);
+                };
             }
         }
     </script>
@@ -39,6 +51,13 @@
 <body>
     <div id="bigBox"></div>
     <div id="smallBox" draggable="true"></div>
+    <ul id="list">
+        <li draggable="true" id="li1">HTML</li>
+        <li draggable="true" id="li2">CSS</li>
+        <li draggable="true" id="li3">JavaScript</li>
+        <li draggable="true" id="li4">jQuery</li>
+        <li draggable="true" id="li5">Vue.js</li>
+    </ul>
 </body>
 
 </html>
